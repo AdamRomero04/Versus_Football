@@ -1,0 +1,650 @@
+.playerName {
+  left: 10px;
+  bottom: 300px;
+  color: rgb(255, 255, 255);
+  font-size: 35px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  font-weight: 1000;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  white-space: pre;
+  margin: 0;
+}
+.photo{
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  bottom: 700px;
+  right: 8px;
+  background: linear-gradient(
+    134deg,
+    #f5717140 0%,
+    rgba(250, 189, 189, 0.4) 33.85%,
+    rgba(255, 255, 255, 0.4) 51.56%,
+    rgba(173, 159, 246, 0.4) 69.27%,
+    #4426eb40 100%
+  );
+  padding: 5px;
+  border-radius: 100px;
+  
+}
+.headbar {
+  width: 100vw;
+  height: 100px;
+  background-color: rgb(38, 0, 39);
+  margin-bottom: 0px;
+}
+.playerComp {
+  color: rgb(255, 255, 255);
+  font-size: 84px;
+  height: 130px;
+  width: 100vw;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(55, 9, 97);
+}
+.blackLine {
+  height: 20px;
+  width: 100vw;
+  background-color: rgb(0, 0, 0);
+}
+.clubName {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  left: 10px;
+  bottom: 343px;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+}
+.design {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 20px;
+  width: 70vw;
+  padding-bottom: 20px;
+  background-color: rgb(72, 17, 77);
+}
+.vs {
+  height: 300px;
+  width: 550px;
+}
+.clubImage {
+  height: 80px;
+  width: 80px;
+  position: relative;
+  left: 200px;
+  top: 162px;
+  background-size: contain;
+  display: none;
+}
+.playerImage {
+  height: 160px;
+  position: relative;
+  width: 160px;
+  border-radius: 50%;
+  left: -5px;
+  top: 15px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: rgb(49, 3, 87);
+  background-size: contain;
+}
+.clubImage {
+  height: 80px;
+  width: 80px;
+  position: relative;
+  left: 20px;
+  top: -60px;
+  background-size: contain;
+}
+.flagImage {
+  height: 48px;
+  width: 80px;
+  bottom: 50px;
+  position: relative;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+.square {
+  position: relative;
+  background: url("https://static.vecteezy.com/system/resources/previews/001/226/403/original/pink-and-purple-geometric-design-vector.png");
+  background-size: cover;
+  padding-left: 20px;
+  padding-right: 10px;
+  margin-right: 40px;
+  margin-left: 40px;
+  padding-top: 10px;
+  border-radius: 9px;
+}
+.position {
+  position: relative;
+  font-size: 22px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  font-weight: 1000;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+  bottom: 20px;
+}
+.images {
+  position: relative;
+  top: -40px;
+}
+.blackLineSmall {
+  height: 70px;
+  width: 70vw;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  background-color: rgb(55, 9, 97);
+  margin-bottom: 0px;
+  position: relative;
+  bottom: -30px;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.blackLineSmallBottom {
+  height: 20px;
+  width: 70vw;
+  background-color: rgb(55, 9, 97);
+  margin-bottom: 0px;
+  position: relative;
+  margin-top: 5px;
+}
+.layer2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(75, 2, 82);
+  padding-bottom: 15px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+.bars {
+  display: flex;
+  justify-content: space-around;
+  width: 70vw;
+  height: 42px;
+  margin-bottom: -15px;
+  background-color: rgba(26, 33, 43, 0.3);
+}
+.leftstat {
+  position: relative;
+  right: 30px;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  text-align: center;
+  line-height: 35px;
+  font-weight: 700px;
+  font-weight: bold;
+  color: white;
+}
+.leftstatgreen {
+  position: relative;
+  right: 30px;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  background: #00ffae;
+  padding-left: 4px;
+  padding-right: 4px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}
+.leftstatred {
+  position: relative;
+  right: 30px;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  background: #ff0036;
+  padding-left: 4px;
+  padding-right: 4px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}
+.rightstat {
+  position: relative;
+  left: 30px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 35px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: white;
+}
+.rightstatred {
+  position: relative;
+  left: 30px;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  background: #ff0036;
+  padding-left: 4px;
+  padding-right: 4px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}
+.rightstatgreen {
+  position: relative;
+  left: 30px;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+  background: #00ffae;
+  padding-left: 4px;
+  padding-right: 4px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+.statLabel {
+  position: relative;
+  text-align: center;
+  top: 34px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-weight: bold;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  background-color: rgb(72, 17, 77);
+  font-size: 35px;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.graphic {
+  position: relative;
+  top: 200px;
+  display: flex;
+  height: 800px;
+  width: 800px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  border: 4px solid rgba(0, 0, 0, 0.67);
+  background: linear-gradient(
+    134deg,
+    #f57171 0%,
+    rgba(250, 189, 189, 0.96) 33.85%,
+    rgba(255, 255, 255, 0.95) 51.56%,
+    rgba(173, 159, 246, 0.94) 69.27%,
+    #4426eb 100%
+  );
+  z-index: -1;
+}
+.middle {
+  display: flex;
+  height: 80px;
+  width: 300px;
+  text-align: center;
+  font-size: 38px;
+  flex-direction: column;
+  background-color: rgb(235, 235, 235);
+  justify-content: center;
+}
+.middleCenter {
+  display: flex;
+  flex-direction: column;
+}
+.statGroup {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+}
+.graphicLeftStat {
+  height: 80px;
+  width: 80px;
+  background-color: #f57171;
+  font-size: 32px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.graphicRightStat {
+  height: 80px;
+  width: 80px;
+  background-color: #4426eb;
+  font-size: 32px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.stats {
+  align-self: center;
+}
+.nameTopTop {
+  font-size: 35px;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 900;
+}
+.nameTopBot {
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 1000;
+  font-style: italic;
+}
+.nameBrickTop {
+  display: flex;
+  height: 100px;
+  background-color: #f57171;
+  flex-direction: column;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.nameBotTop {
+  font-size: 50px;
+  text-align: right;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 1000;
+  font-style: italic;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.nameBotBot {
+  font-size: 35px;
+  text-align: right;
+  font-style: italic;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 900;
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.nameBrickBot {
+  display: flex;
+  height: 100px;
+  background-color: #4426eb;
+  flex-direction: column;
+  padding-left: 20px;
+  color: white;
+  padding-right: 20px;
+  border-radius: 10px;
+  padding-bottom: 5px;
+}
+
+.nameBottom {
+  height: 100px;
+  width: 275px;
+  background-color: #4426eb;
+  align-self: flex-end;
+  color: white;
+  text-align: right;
+}
+.graphicPos {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: #f57171;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 20px;
+  font-size: 32px;
+}
+.graphicPlayer {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+.graphicPlayerBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+.graphicPosBot {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  background: #4426eb;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 20px;
+  font-size: 32px;
+}
+.playerCircleTop {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  background-color: black;
+  border-radius: 100%;
+  margin-top: 20px;
+  background-size: cover;
+  border: 4px solid #f57171;
+}
+.playerCircleBot {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  background-color: black;
+  border-radius: 100%;
+  margin-bottom: 20px;
+  background-size: cover;
+  border: 4px solid #4426eb;
+}
+.graphicRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 808px;
+}
+.graphicLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 808px;
+}
+.graphicPics {
+  border-radius: 20px;
+  background: rgba(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  justify-content: space-evenly;
+  padding: 5px;
+  border: 4px solid #f57171;
+  border-width: 5px;
+}
+.graphicPicsBottom {
+  border-radius: 20px;
+  background: rgba(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  justify-content: space-evenly;
+  padding: 5px;
+  border: 4px solid #4426eb;
+  border-width: 5px;
+}
+.graphicClub {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(255, 255, 255);
+  background-size: contain;
+  background-position: center;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  object-fit: contain;
+  background-image: var(--bg-img);
+}
+.graphicNation {
+  height: 30px;
+  width: 48px;
+  background-color: black;
+  border-color: black;
+  border-width: 2px;
+  align-self: center;
+  background-size: cover;
+  background-position: center;
+
+}
+.graphicDesign {
+  height: 800px;
+  width: 800px;
+  background-image: url("https://i.ibb.co/5Mg3Pmn/messy-chaotic-particles-spotted-seamless-pattern-vector-abstract-background-repeat-tiling-texture-wa.png");
+  opacity: 0.4;
+  z-index: -2;
+  position: absolute;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 1000px;
+  width: 1000px;
+  flex-wrap: wrap;
+  position: relative;
+  top: 100px;
+  margin-bottom: 300px;
+}
+.graphicButtons {
+  height: 80px;
+  width: 200px;
+  font-size: 30px;
+  border-radius: 30px;
+  margin: 20px;
+  background: rgb(55, 9, 97);
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  margin-top: 20px;
+}
+.generate {
+  position: relative;
+  height: 200px;
+  width: 400px;
+  font-size: 50px;
+  border-radius: 20px;
+  margin-bottom: 1000px;
+  background: rgb(57, 6, 105);
+  font-weight: bold;
+}
+.statbar{
+  height: 10px;
+  width: 300px;
+  position: absolute;
+  margin-bottom: 25px;
+  left: 250px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+canvas.statbar {
+  height: 220px !important;
+  width: 300px !important;
+}
+#firstStat{
+bottom: 432px;
+min-width: 300px;
+}
+#secondStat{
+  bottom: 327px;
+}
+#thirdStat{
+  bottom: 222px;
+}
+#fourthStat{
+  bottom: 117px;
+}
+#fifthStat{
+  bottom: 12px;
+}
+.directionbox{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(55, 9, 97);
+  margin-top: 100px;
+  color: white;
+  height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.directions{
+  font-size: 60px;
+}
+.middleMark{
+  background: rgb(0, 0, 0);
+  height: 13px;
+  width: 1px;
+  z-index: 3;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+#firstMark{
+  top: 233px;
+}
+#secondMark{
+  top: 338px;
+}
+#thirdMark{
+  top: 443px;
+}
+#fourthMark{
+  top: 548px;
+}
+#fifthMark{
+  top: 653px;
+}

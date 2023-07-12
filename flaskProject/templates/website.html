@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/website.css') }}"
+    />
+  <body>
+    <div class="playerComp">Versus Football</div>
+    <div class="design">
+      <div class="square">
+        <div  class="names" id="namesLeft">
+          <p class="playerName">{{playerA['name'] }}</p>
+          <p class="clubName">{{playerA['currClub'] }}</p>
+          <p class="position">{{playerA['position']}}</p>
+        </div>
+        <div class="images" id="leftImages">
+          <img
+            class="playerImage"
+            src="{{playerA['playerPic'] }}"
+          />
+          <img
+            class="clubImage"
+            src="{{playerA['clubBadge'] }}"
+          />
+          <img
+            class="flagImage"
+            src="{{playerA['nationFlag'] }}"
+          />
+        </div>
+      </div>
+      
+      <div class="square">
+        <div class="names" id="namesRight">
+          <p class="playerName">{{playerB['name'] }}</p>
+          <p class="clubName">{{playerB['currClub'] }}</p>
+          <p class="position">{{playerB['position']}}</p>
+        </div>
+        <div class="images" id="rightImages">
+          <img
+            class="playerImage"
+            src="{{playerB['playerPic'] }}"
+          />
+          <img
+            class="clubImage"
+            src="{{playerB['clubBadge'] }}"
+          />
+          <img
+            class="flagImage"
+            src="{{playerB['nationFlag'] }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="blackLineSmall">22/23 Domestic Stats</div>
+    <div class="layer2">
+      <div class="statLabel">Goals</div>
+      <div class="bars" id="Goals">
+        {% if playerA['goals'] > playerB['goals'] %}
+        <div class="leftstatgreen">{{playerA['goals'] }}</div>
+        <div class="rightstatred">{{playerB['goals'] }}</div>
+        {% elif playerB['goals'] > playerA['goals'] %}
+        <div class="leftstatred">{{playerA['goals'] }}</div>
+        <div class="rightstatgreen">{{playerB['goals'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['goals'] }}</div>
+        <div class="rightstat">{{playerB['goals'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Assists</div>
+      <div class="bars" id="Assists">
+        {% if playerA['assists'] > playerB['assists'] %}
+        <div class="leftstatgreen">{{playerA['assists'] }}</div>
+        <div class="rightstatred">{{playerB['assists'] }}</div>
+        {% elif playerB['assists'] > playerA['assists'] %}
+        <div class="leftstatred">{{playerA['assists'] }}</div>
+        <div class="rightstatgreen">{{playerB['assists'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['assists'] }}</div>
+        <div class="rightstat">{{playerB['assists'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Expected Goals</div>
+      <div class="bars" id="Expected Goals">
+        {% if playerA['xG'] > playerB['xG'] %}
+        <div class="leftstatgreen">{{playerA['xG'] }}</div>
+        <div class="rightstatred">{{playerB['xG'] }}</div>
+        {% elif playerB['xG'] > playerA['xG'] %}
+        <div class="leftstatred">{{playerA['xG'] }}</div>
+        <div class="rightstatgreen">{{playerB['xG'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['xG'] }}</div>
+        <div class="rightstat">{{playerB['xG'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Expected Assists</div>
+      <div class="bars" id="Expected Assists">
+        {% if playerA['xA'] > playerB['xA'] %}
+        <div class="leftstatgreen">{{playerA['xA'] }}</div>
+        <div class="rightstatred">{{playerB['xA'] }}</div>
+        {% elif playerB['xA'] > playerA['xA'] %}
+        <div class="leftstatred">{{playerA['xA'] }}</div>
+        <div class="rightstatgreen">{{playerB['xA'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['xA'] }}</div>
+        <div class="rightstat">{{playerB['xA'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Goals/Assists</div>
+      <div class="bars" id="Goals/Assists">
+        {% if playerA['g_a'] > playerB['g_a'] %}
+        <div class="leftstatgreen">{{playerA['g_a'] }}</div>
+        <div class="rightstatred">{{playerB['g_a'] }}</div>
+        {% elif playerB['g_a'] > playerA['g_a'] %}
+        <div class="leftstatred">{{playerA['g_a'] }}</div>
+        <div class="rightstatgreen">{{playerB['g_a'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['g_a'] }}</div>
+        <div class="rightstat">{{playerB['g_a'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Goals/90</div>
+      <div class="bars" id="Goals/90">
+        {% if playerA['goalsPer90'] > playerB['goalsPer90'] %}
+        <div class="leftstatgreen">{{playerA['goalsPer90'] }}</div>
+        <div class="rightstatred">{{playerB['goalsPer90'] }}</div>
+        {% elif playerB['goalsPer90'] > playerA['goalsPer90'] %}
+        <div class="leftstatred">{{playerA['goalsPer90'] }}</div>
+        <div class="rightstatgreen">{{playerB['goalsPer90'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['goalsPer90'] }}</div>
+        <div class="rightstat">{{playerB['goalsPer90'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Assists/90</div>
+      <div class="bars" id="Assists/90">
+        {% if playerA['assistsPer90'] > playerB['assistsPer90'] %}
+        <div class="leftstatgreen">{{playerA['assistsPer90'] }}</div>
+        <div class="rightstatred">{{playerB['assistsPer90'] }}</div>
+        {% elif playerB['assistsPer90'] > playerA['assistsPer90'] %}
+        <div class="leftstatred">{{playerA['assistsPer90'] }}</div>
+        <div class="rightstatgreen">{{playerB['assistsPer90'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['assistsPer90'] }}</div>
+        <div class="rightstat">{{playerB['assistsPer90'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Matches</div>
+      <div class="bars" id="Matches">
+        {% if playerA['matchesPlayed'] > playerB['matchesPlayed'] %}
+        <div class="leftstatgreen">{{playerA['matchesPlayed'] }}</div>
+        <div class="rightstatred">{{playerB['matchesPlayed'] }}</div>
+        {% elif playerB['matchesPlayed'] > playerA['matchesPlayed'] %}
+        <div class="leftstatred">{{playerA['matchesPlayed'] }}</div>
+        <div class="rightstatgreen">{{playerB['matchesPlayed'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['matchesPlayed'] }}</div>
+        <div class="rightstat">{{playerB['matchesPlayed'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Minutes</div>
+      <div class="bars" id="Minutes">
+        {% if playerA['minutesPlayed'] > playerB['minutesPlayed'] %}
+        <div class="leftstatgreen">{{playerA['minutesPlayed'] }}</div>
+        <div class="rightstatred">{{playerB['minutesPlayed'] }}</div>
+        {% elif playerB['minutesPlayed'] > playerA['minutesPlayed'] %}
+        <div class="leftstatred">{{playerA['minutesPlayed'] }}</div>
+        <div class="rightstatgreen">{{playerB['minutesPlayed'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['minutesPlayed'] }}</div>
+        <div class="rightstat">{{playerB['minutesPlayed'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Yellow Cards</div>
+      <div class="bars" id="Yellow Cards">
+        {% if playerA['yellowCards'] > playerB['yellowCards'] %}
+        <div class="leftstatred">{{playerA['yellowCards'] }}</div>
+        <div class="rightstatgreen">{{playerB['yellowCards'] }}</div>
+        {% elif playerB['yellowCards'] > playerA['yellowCards'] %}
+        <div class="leftstatgreen">{{playerA['yellowCards'] }}</div>
+        <div class="rightstatred">{{playerB['yellowCards'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['yellowCards'] }}</div>
+        <div class="rightstat">{{playerB['yellowCards'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">Red Cards</div>
+      <div class="bars" id="Red Cards">
+        {% if playerA['redCards'] > playerB['redCards'] %}
+        <div class="leftstatred">{{playerA['redCards'] }}</div>
+        <div class="rightstatgreen">{{playerB['redCards'] }}</div>
+        {% elif playerB['redCards'] > playerA['redCards'] %}
+        <div class="leftstatgreen">{{playerA['redCards'] }}</div>
+        <div class="rightstatred">{{playerB['redCards'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['redCards'] }}</div>
+        <div class="rightstat">{{playerB['redCards'] }}</div>
+        {% endif %}
+      </div>
+      <div class="statLabel">League Trophies</div>
+      <div class="bars" id="League Trophies">
+        {% if playerA['trophiesWon'] > playerB['trophiesWon'] %}
+        <div class="leftstatgreen">{{playerA['trophiesWon'] }}</div>
+        <div class="rightstatred">{{playerB['trophiesWon'] }}</div>
+        {% elif playerB['trophiesWon'] > playerA['trophiesWon'] %}
+        <div class="leftstatred">{{playerA['trophiesWon'] }}</div>
+        <div class="rightstatgreen">{{playerB['trophiesWon'] }}</div>
+        {% else %}
+        <div class="leftstat">{{playerA['trophiesWon'] }}</div>
+        <div class="rightstat">{{playerB['trophiesWon'] }}</div>
+        {% endif %}
+      </div>
+
+
+      {%if playerA['position'] == 'FW'%}
+        {%if playerB['position'] == 'FW' or playerB['position'] == 'MF'%}
+      
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          {% if playerA['shotsOnTarget'] > playerB['shotsOnTarget'] %}
+          <div class="leftstatgreen">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstatred">{{playerB['shotsOnTarget'] }}</div>
+          {% elif playerB['shotsOnTarget'] > playerA['shotsOnTarget'] %}
+          <div class="leftstatred">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstatgreen">{{playerB['shotsOnTarget'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Penalties</div>
+        <div class="bars" id="Penalties">
+          {% if playerA['penalties'] > playerB['penalties'] %}
+          <div class="leftstatgreen">{{playerA['penalties'] }}</div>
+          <div class="rightstatred">{{playerB['penalties'] }}</div>
+          {% elif playerB['penalties'] > playerA['penalties'] %}
+          <div class="leftstatred">{{playerA['penalties'] }}</div>
+          <div class="rightstatgreen">{{playerB['penalties'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">{{playerB['penalties'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          {% if playerA['takeOns'] > playerB['takeOns'] %}
+          <div class="leftstatgreen">{{playerA['takeOns'] }}</div>
+          <div class="rightstatred">{{playerB['takeOns'] }}</div>
+          {% elif playerB['takeOns'] > playerA['takeOns'] %}
+          <div class="leftstatred">{{playerA['takeOns'] }}</div>
+          <div class="rightstatgreen">{{playerB['takeOns'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">{{playerB['takeOns'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          {% if playerA['takeOnPerc'] > playerB['takeOnPerc'] %}
+          <div class="leftstatgreen">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstatred">{{playerB['takeOnPerc'] }}</div>
+          {% elif playerB['takeOnPerc'] > playerA['takeOnPerc'] %}
+          <div class="leftstatred">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstatgreen">{{playerB['takeOnPerc'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          {% if playerA['dribbles'] > playerB['dribbles'] %}
+          <div class="leftstatgreen">{{playerA['dribbles'] }}</div>
+          <div class="rightstatred">{{playerB['dribbles'] }}</div>
+          {% elif playerB['dribbles'] > playerA['dribbles'] %}
+          <div class="leftstatred">{{playerA['dribbles'] }}</div>
+          <div class="rightstatgreen">{{playerB['dribbles'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">{{playerB['dribbles'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          {% if playerA['finalThirdTouches'] > playerB['finalThirdTouches'] %}
+          <div class="leftstatgreen">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstatred">{{playerB['finalThirdTouches'] }}</div>
+          {% elif playerB['finalThirdTouches'] > playerA['finalThirdTouches'] %}
+          <div class="leftstatred">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstatgreen">{{playerB['finalThirdTouches'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          {% if playerA['keyPasses'] > playerB['keyPasses'] %}
+          <div class="leftstatgreen">{{playerA['keyPasses'] }}</div>
+          <div class="rightstatred">{{playerB['keyPasses'] }}</div>
+          {% elif playerB['keyPasses'] > playerA['keyPasses'] %}
+          <div class="leftstatred">{{playerA['keyPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['keyPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">{{playerB['keyPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          {% if playerA['progPasses'] > playerB['progPasses'] %}
+          <div class="leftstatgreen">{{playerA['progPasses'] }}</div>
+          <div class="rightstatred">{{playerB['progPasses'] }}</div>
+          {% elif playerB['progPasses'] > playerA['progPasses'] %}
+          <div class="leftstatred">{{playerA['progPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['progPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">{{playerB['progPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          {% if playerA['crosses'] > playerB['crosses'] %}
+          <div class="leftstatgreen">{{playerA['crosses'] }}</div>
+          <div class="rightstatred">{{playerB['crosses'] }}</div>
+          {% elif playerB['crosses'] > playerA['crosses'] %}
+          <div class="leftstatred">{{playerA['crosses'] }}</div>
+          <div class="rightstatgreen">{{playerB['crosses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">{{playerB['crosses'] }}</div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {%if playerB['position'] == 'MF'%}
+
+        <div class="statLabel">Fouls</div>
+        <div class="bars" id="Fouls">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['fouls'] }}</div>
+        </div>
+        <div class="statLabel">Tackles</div>
+        <div class="bars" id="Tackles">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['tackles'] }}</div>
+        </div>
+        <div class="statLabel">Blocks</div>
+        <div class="bars" id="Blocks">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['blocks'] }}</div>          
+        </div>
+        <div class="statLabel">Interceptions</div>
+        <div class="bars" id="Interceptions">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['interceptions'] }}</div>
+        </div>
+        <div class="statLabel">Clearances</div>
+        <div class="bars" id="Clearances">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+        </div>
+        <div class="statLabel">Aerial Duel %</div>
+        <div class="bars" id="Aerial Duel %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+        </div>
+        <div class="statLabel">Long Ball Completion %</div>
+        <div class="bars" id="Long Ball Completion %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['longBallCompPerc'] }}</div>
+        </div>
+        <div class="statLabel">Recoveries</div>
+        <div class="bars" id="Recoveries">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['recoveries'] }}</div>
+        </div>
+        {% endif %}
+
+        {%if playerB['position'] == 'DF'%}
+        <div class="statLabel">Fouls</div>
+        <div class="bars" id="Fouls">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['fouls'] }}</div>
+        </div>
+        <div class="statLabel">Tackles</div>
+        <div class="bars" id="Tackles">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['tackles'] }}</div>
+        </div>
+        <div class="statLabel">Blocks</div>
+        <div class="bars" id="Blocks">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['blocks'] }}</div>
+        </div>
+        <div class="statLabel">Interceptions</div>
+        <div class="bars" id="Interceptions">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['interceptions'] }}</div>
+        </div>
+        <div class="statLabel">Clearances</div>
+        <div class="bars" id="Clearances">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+        </div>
+        <div class="statLabel">Aerial Duel %</div>
+        <div class="bars" id="Aerial Duel %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+        </div>
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Penalties Scored</div>
+        <div class="bars" id="Penalties Scored">
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+
+        {% endif %}
+        
+        {%if playerB['position'] == 'GK'%}
+        <div class="statLabel">Saves</div>
+        <div class="bars" id="Saves">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['saves'] }}</div>
+        </div>
+        <div class="statLabel">Save %</div>
+        <div class="bars" id="Save %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['savePerc'] }}</div>
+        </div>
+        <div class="statLabel">Clean Sheets</div>
+        <div class="bars" id="Clean Sheets">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['cleanSheets'] }}</div>
+        </div>
+        <div class="statLabel">Clean Sheet %</div>
+        <div class="bars" id="Clean Sheet %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['cleanSheetPerc'] }}</div>
+        </div>
+        <div class="statLabel">Goals Against</div>
+        <div class="bars" id="Goals Against">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['goalsAgainst'] }}</div>
+        </div>
+        <div class="statLabel">Penalties Faced</div>
+        <div class="bars" id="Penalties Faced">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['penFaced'] }}</div>
+        </div>
+        <div class="statLabel">Penalties Saved</div>
+        <div class="bars" id="Penalties Saved">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['penSaved'] }}</div>
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+        </div>
+        <div class="statLabel">Expected Goals Against</div>
+        <div class="bars" id="Expected Goals Against">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['xgAgainst'] }}</div>
+        </div>
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Penalties Scored</div>
+        <div class="bars" id="Penalties Scored">
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        {% endif %}
+        {% endif %}
+
+      {%if playerA['position'] == 'MF'%}
+
+        {%if playerB['position'] == 'FW'%}
+       
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          {% if playerA['shotsOnTarget'] > playerB['shotsOnTarget'] %}
+          <div class="leftstatgreen">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstatred">{{playerB['shotsOnTarget'] }}</div>
+          {% elif playerB['shotsOnTarget'] > playerA['shotsOnTarget'] %}
+          <div class="leftstatred">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstatgreen">{{playerB['shotsOnTarget'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Penalties Scored</div>
+        <div class="bars" id="Penalties Scored">
+          {% if playerA['penalties'] > playerB['penalties'] %}
+          <div class="leftstatgreen">{{playerA['penalties'] }}</div>
+          <div class="rightstatred">{{playerB['penalties'] }}</div>
+          {% elif playerB['penalties'] > playerA['penalties'] %}
+          <div class="leftstatred">{{playerA['penalties'] }}</div>
+          <div class="rightstatgreen">{{playerB['penalties'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">{{playerB['penalties'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          {% if playerA['takeOns'] > playerB['takeOns'] %}
+          <div class="leftstatgreen">{{playerA['takeOns'] }}</div>
+          <div class="rightstatred">{{playerB['takeOns'] }}</div>
+          {% elif playerB['takeOns'] > playerA['takeOns'] %}
+          <div class="leftstatred">{{playerA['takeOns'] }}</div>
+          <div class="rightstatgreen">{{playerB['takeOns'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">{{playerB['takeOns'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          {% if playerA['takeOnPerc'] > playerB['takeOnPerc'] %}
+          <div class="leftstatgreen">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstatred">{{playerB['takeOnPerc'] }}</div>
+          {% elif playerB['takeOnPerc'] > playerA['takeOnPerc'] %}
+          <div class="leftstatred">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstatgreen">{{playerB['takeOnPerc'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          {% if playerA['dribbles'] > playerB['dribbles'] %}
+          <div class="leftstatgreen">{{playerA['dribbles'] }}</div>
+          <div class="rightstatred">{{playerB['dribbles'] }}</div>
+          {% elif playerB['dribbles'] > playerA['dribbles'] %}
+          <div class="leftstatred">{{playerA['dribbles'] }}</div>
+          <div class="rightstatgreen">{{playerB['dribbles'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">{{playerB['dribbles'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          {% if playerA['finalThirdTouches'] > playerB['finalThirdTouches'] %}
+          <div class="leftstatgreen">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstatred">{{playerB['finalThirdTouches'] }}</div>
+          {% elif playerB['finalThirdTouches'] > playerA['finalThirdTouches'] %}
+          <div class="leftstatred">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstatgreen">{{playerB['finalThirdTouches'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          {% if playerA['keyPasses'] > playerB['keyPasses'] %}
+          <div class="leftstatgreen">{{playerA['keyPasses'] }}</div>
+          <div class="rightstatred">{{playerB['keyPasses'] }}</div>
+          {% elif playerB['keyPasses'] > playerA['keyPasses'] %}
+          <div class="leftstatred">{{playerA['keyPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['keyPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">{{playerB['keyPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          {% if playerA['progPasses'] > playerB['progPasses'] %}
+          <div class="leftstatgreen">{{playerA['progPasses'] }}</div>
+          <div class="rightstatred">{{playerB['progPasses'] }}</div>
+          {% elif playerB['progPasses'] > playerA['progPasses'] %}
+          <div class="leftstatred">{{playerA['progPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['progPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">{{playerB['progPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          {% if playerA['crosses'] > playerB['crosses'] %}
+          <div class="leftstatgreen">{{playerA['crosses'] }}</div>
+          <div class="rightstatred">{{playerB['crosses'] }}</div>
+          {% elif playerB['crosses'] > playerA['crosses'] %}
+          <div class="leftstatred">{{playerA['crosses'] }}</div>
+          <div class="rightstatgreen">{{playerB['crosses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">{{playerB['crosses'] }}</div>
+          {% endif %}
+        </div>
+
+        <div class="statLabel">Fouls</div>
+        <div class="bars" id="Fouls">
+          <div class="leftstat">{{playerA['fouls'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Tackles</div>
+        <div class="bars" id="Tackles">
+          <div class="leftstat">{{playerA['tackles'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Blocks</div>
+        <div class="bars" id="Blocks">
+          <div class="leftstat">{{playerA['blocks'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Interceptions</div>
+        <div class="bars" id="Interceptions">
+          <div class="leftstat">{{playerA['interceptions'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Clearances</div>
+        <div class="bars" id="Clearances">
+          <div class="leftstat">{{playerA['totalPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          <div class="leftstat">{{playerA['totalPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Aerial Duel %</div>
+        <div class="bars" id="Aerial Duel %">
+          <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Long Ball Completion %</div>
+        <div class="bars" id="Long Ball Completion %">
+          <div class="leftstat">{{playerA['longBallCompPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Recoveries</div>
+        <div class="bars" id="Recoveries">
+          <div class="leftstat">{{playerA['recoveries'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        {% endif %}
+
+        {%if playerB['position'] == 'MF'%}
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          {% if playerA['shotsOnTarget'] > playerB['shotsOnTarget'] %}
+          <div class="leftstatgreen">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstatred">{{playerB['shotsOnTarget'] }}</div>
+          {% elif playerB['shotsOnTarget'] > playerA['shotsOnTarget'] %}
+          <div class="leftstatred">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstatgreen">{{playerB['shotsOnTarget'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Penalties Scored</div>
+        <div class="bars" id="Penalties Scored">
+          {% if playerA['penalties'] > playerB['penalties'] %}
+          <div class="leftstatgreen">{{playerA['penalties'] }}</div>
+          <div class="rightstatred">{{playerB['penalties'] }}</div>
+          {% elif playerB['penalties'] > playerA['penalties'] %}
+          <div class="leftstatred">{{playerA['penalties'] }}</div>
+          <div class="rightstatgreen">{{playerB['penalties'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">{{playerB['penalties'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          {% if playerA['takeOns'] > playerB['takeOns'] %}
+          <div class="leftstatgreen">{{playerA['takeOns'] }}</div>
+          <div class="rightstatred">{{playerB['takeOns'] }}</div>
+          {% elif playerB['takeOns'] > playerA['takeOns'] %}
+          <div class="leftstatred">{{playerA['takeOns'] }}</div>
+          <div class="rightstatgreen">{{playerB['takeOns'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">{{playerB['takeOns'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          {% if playerA['takeOnPerc'] > playerB['takeOnPerc'] %}
+          <div class="leftstatgreen">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstatred">{{playerB['takeOnPerc'] }}</div>
+          {% elif playerB['takeOnPerc'] > playerA['takeOnPerc'] %}
+          <div class="leftstatred">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstatgreen">{{playerB['takeOnPerc'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          {% if playerA['dribbles'] > playerB['dribbles'] %}
+          <div class="leftstatgreen">{{playerA['dribbles'] }}</div>
+          <div class="rightstatred">{{playerB['dribbles'] }}</div>
+          {% elif playerB['dribbles'] > playerA['dribbles'] %}
+          <div class="leftstatred">{{playerA['dribbles'] }}</div>
+          <div class="rightstatgreen">{{playerB['dribbles'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">{{playerB['dribbles'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          {% if playerA['finalThirdTouches'] > playerB['finalThirdTouches'] %}
+          <div class="leftstatgreen">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstatred">{{playerB['finalThirdTouches'] }}</div>
+          {% elif playerB['finalThirdTouches'] > playerA['finalThirdTouches'] %}
+          <div class="leftstatred">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstatgreen">{{playerB['finalThirdTouches'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          {% if playerA['keyPasses'] > playerB['keyPasses'] %}
+          <div class="leftstatgreen">{{playerA['keyPasses'] }}</div>
+          <div class="rightstatred">{{playerB['keyPasses'] }}</div>
+          {% elif playerB['keyPasses'] > playerA['keyPasses'] %}
+          <div class="leftstatred">{{playerA['keyPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['keyPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">{{playerB['keyPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          {% if playerA['progPasses'] > playerB['progPasses'] %}
+          <div class="leftstatgreen">{{playerA['progPasses'] }}</div>
+          <div class="rightstatred">{{playerB['progPasses'] }}</div>
+          {% elif playerB['progPasses'] > playerA['progPasses'] %}
+          <div class="leftstatred">{{playerA['progPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['progPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">{{playerB['progPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          {% if playerA['crosses'] > playerB['crosses'] %}
+          <div class="leftstatgreen">{{playerA['crosses'] }}</div>
+          <div class="rightstatred">{{playerB['crosses'] }}</div>
+          {% elif playerB['crosses'] > playerA['crosses'] %}
+          <div class="leftstatred">{{playerA['crosses'] }}</div>
+          <div class="rightstatgreen">{{playerB['crosses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">{{playerB['crosses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Fouls</div>
+        <div class="bars" id="Fouls">
+          {% if playerA['fouls'] > playerB['fouls'] %}
+          <div class="leftstatred">{{playerA['fouls'] }}</div>
+          <div class="rightstatgreen">{{playerB['fouls'] }}</div>
+          {% elif playerB['fouls'] > playerA['fouls'] %}
+          <div class="leftstatgreen">{{playerA['fouls'] }}</div>
+          <div class="rightstatred">{{playerB['fouls'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['fouls'] }}</div>
+          <div class="rightstat">{{playerB['fouls'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Tackles</div>
+        <div class="bars" id="Tackles">
+          {% if playerA['tackles'] > playerB['tackles'] %}
+          <div class="leftstatgreen">{{playerA['tackles'] }}</div>
+          <div class="rightstatred">{{playerB['tackles'] }}</div>
+          {% elif playerB['tackles'] > playerA['tackles'] %}
+          <div class="leftstatred">{{playerA['tackles'] }}</div>
+          <div class="rightstatgreen">{{playerB['tackles'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['tackles'] }}</div>
+          <div class="rightstat">{{playerB['tackles'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Blocks</div>
+        <div class="bars" id="Blocks">
+          {% if playerA['blocks'] > playerB['blocks'] %}
+          <div class="leftstatgreen">{{playerA['blocks'] }}</div>
+          <div class="rightstatred">{{playerB['blocks'] }}</div>
+          {% elif playerB['blocks'] > playerA['blocks'] %}
+          <div class="leftstatred">{{playerA['blocks'] }}</div>
+          <div class="rightstatgreen">{{playerB['blocks'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['blocks'] }}</div>
+          <div class="rightstat">{{playerB['blocks'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Interceptions</div>
+        <div class="bars" id="Interceptions">
+          {% if playerA['interceptions'] > playerB['interceptions'] %}
+          <div class="leftstatgreen">{{playerA['interceptions'] }}</div>
+          <div class="rightstatred">{{playerB['interceptions'] }}</div>
+          {% elif playerB['interceptions'] > playerA['interceptions'] %}
+          <div class="leftstatred">{{playerA['interceptions'] }}</div>
+          <div class="rightstatgreen">{{playerB['interceptions'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['interceptions'] }}</div>
+          <div class="rightstat">{{playerB['interceptions'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Clearances</div>
+        <div class="bars" id="Clearances">
+          {% if playerA['clearances'] > playerB['clearances'] %}
+          <div class="leftstatgreen">{{playerA['clearances'] }}</div>
+          <div class="rightstatred">{{playerB['clearances'] }}</div>
+          {% elif playerB['clearances'] > playerA['clearances'] %}
+          <div class="leftstatred">{{playerA['clearances'] }}</div>
+          <div class="rightstatgreen">{{playerB['clearances'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['clearances'] }}</div>
+          <div class="rightstat">{{playerB['clearances'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          {% if playerA['totalPasses'] > playerB['totalPasses'] %}
+          <div class="leftstatgreen">{{playerA['totalPasses'] }}</div>
+          <div class="rightstatred">{{playerB['totalPasses'] }}</div>
+          {% elif playerB['totalPasses'] > playerA['totalPasses'] %}
+          <div class="leftstatred">{{playerA['totalPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['totalPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['totalPasses'] }}</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          {% if playerA['passAccuracy'] > playerB['passAccuracy'] %}
+          <div class="leftstatgreen">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstatred">{{playerB['passAccuracy'] }}</div>
+          {% elif playerB['passAccuracy'] > playerA['passAccuracy'] %}
+          <div class="leftstatred">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstatgreen">{{playerB['passAccuracy'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Aerial Duel %</div>
+        <div class="bars" id="Aerial Duel %">
+          {% if playerA['aerialDuelPerc'] > playerB['aerialDuelPerc'] %}
+          <div class="leftstatgreen">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstatred">{{playerB['aerialDuelPerc'] }}</div>
+          {% elif playerB['aerialDuelPerc'] > playerA['aerialDuelPerc'] %}
+          <div class="leftstatred">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstatgreen">{{playerB['aerialDuelPerc'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Long Ball Completion %</div>
+        <div class="bars" id="Long Ball Completion %">
+          {% if playerA['longBallCompPerc'] > playerB['longBallCompPerc'] %}
+          <div class="leftstatgreen">{{playerA['longBallCompPerc'] }}</div>
+          <div class="rightstatred">{{playerB['longBallCompPerc'] }}</div>
+          {% elif playerB['longBallCompPerc'] > playerA['longBallCompPerc'] %}
+          <div class="leftstatred">{{playerA['longBallCompPerc'] }}</div>
+          <div class="rightstatgreen">{{playerB['longBallCompPerc'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['longBallCompPerc'] }}</div>
+          <div class="rightstat">{{playerB['longBallCompPerc'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Recoveries</div>
+        <div class="bars" id="Recoveries">
+          {% if playerA['recoveries'] > playerB['recoveries'] %}
+          <div class="leftstatgreen">{{playerA['recoveries'] }}</div>
+          <div class="rightstatred">{{playerB['recoveries'] }}</div>
+          {% elif playerB['recoveries'] > playerA['recoveries'] %}
+          <div class="leftstatred">{{playerA['recoveries'] }}</div>
+          <div class="rightstatgreen">{{playerB['recoveries'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['recoveries'] }}</div>
+          <div class="rightstat">{{playerB['recoveries'] }}</div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {%if playerB['position'] == 'DF'%}
+        <div class="statLabel">Fouls</div>
+        <div class="bars" id="Fouls">
+          {% if playerA['fouls'] > playerB['fouls'] %}
+          <div class="leftstatred">{{playerA['fouls'] }}</div>
+          <div class="rightstatgreen">{{playerB['fouls'] }}</div>
+          {% elif playerB['fouls'] > playerA['fouls'] %}
+          <div class="leftstatgreen">{{playerA['fouls'] }}</div>
+          <div class="rightstatred">{{playerB['fouls'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['fouls'] }}</div>
+          <div class="rightstat">{{playerB['fouls'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Tackles</div>
+        <div class="bars" id="Tackles">
+          {% if playerA['tackles'] > playerB['tackles'] %}
+          <div class="leftstatgreen">{{playerA['tackles'] }}</div>
+          <div class="rightstatred">{{playerB['tackles'] }}</div>
+          {% elif playerB['tackles'] > playerA['tackles'] %}
+          <div class="leftstatred">{{playerA['tackles'] }}</div>
+          <div class="rightstatgreen">{{playerB['tackles'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['tackles'] }}</div>
+          <div class="rightstat">{{playerB['tackles'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Blocks</div>
+        <div class="bars" id="Blocks">
+          {% if playerA['blocks'] > playerB['blocks'] %}
+          <div class="leftstatgreen">{{playerA['blocks'] }}</div>
+          <div class="rightstatred">{{playerB['blocks'] }}</div>
+          {% elif playerB['blocks'] > playerA['blocks'] %}
+          <div class="leftstatred">{{playerA['blocks'] }}</div>
+          <div class="rightstatgreen">{{playerB['blocks'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['blocks'] }}</div>
+          <div class="rightstat">{{playerB['blocks'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Interceptions</div>
+        <div class="bars" id="Interceptions">
+          {% if playerA['interceptions'] > playerB['interceptions'] %}
+          <div class="leftstatgreen">{{playerA['interceptions'] }}</div>
+          <div class="rightstatred">{{playerB['interceptions'] }}</div>
+          {% elif playerB['interceptions'] > playerA['interceptions'] %}
+          <div class="leftstatred">{{playerA['interceptions'] }}</div>
+          <div class="rightstatgreen">{{playerB['interceptions'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['interceptions'] }}</div>
+          <div class="rightstat">{{playerB['interceptions'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Clearances</div>
+        <div class="bars" id="Clearances">
+          {% if playerA['clearances'] > playerB['clearances'] %}
+          <div class="leftstatgreen">{{playerA['clearances'] }}</div>
+          <div class="rightstatred">{{playerB['clearances'] }}</div>
+          {% elif playerB['clearances'] > playerA['clearances'] %}
+          <div class="leftstatred">{{playerA['clearances'] }}</div>
+          <div class="rightstatgreen">{{playerB['clearances'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['clearances'] }}</div>
+          <div class="rightstat">{{playerB['clearances'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          {% if playerA['totalPasses'] > playerB['totalPasses'] %}
+          <div class="leftstatgreen">{{playerA['totalPasses'] }}</div>
+          <div class="rightstatred">{{playerB['totalPasses'] }}</div>
+          {% elif playerB['totalPasses'] > playerA['totalPasses'] %}
+          <div class="leftstatred">{{playerA['totalPasses'] }}</div>
+          <div class="rightstatgreen">{{playerB['totalPasses'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['totalPasses'] }}</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          {% if playerA['passAccuracy'] > playerB['passAccuracy'] %}
+          <div class="leftstatgreen">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstatred">{{playerB['passAccuracy'] }}</div>
+          {% elif playerB['passAccuracy'] > playerA['passAccuracy'] %}
+          <div class="leftstatred">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstatgreen">{{playerB['passAccuracy'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Aerial Duel %</div>
+        <div class="bars" id="Aerial Duel %">
+          {% if playerA['aerialDuelPerc'] > playerB['aerialDuelPerc'] %}
+          <div class="leftstatgreen">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstatred">{{playerB['aerialDuelPerc'] }}</div>
+          {% elif playerB['aerialDuelPerc'] > playerA['aerialDuelPerc'] %}
+          <div class="leftstatred">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstatgreen">{{playerB['aerialDuelPerc'] }}</div>
+          {% else %}
+          <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+          {% endif %}
+        </div>
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Penalties Scored</div>
+        <div class="bars" id="Penalties Scored">
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Long Ball Completion %</div>
+        <div class="bars" id="Long Ball Completion %">
+          <div class="leftstat">{{playerA['longBallCompPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Recoveries</div>
+        <div class="bars" id="Recoveries">
+          <div class="leftstat">{{playerA['recoveries'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        {% endif %}
+
+        {%if playerB['position'] == 'GK'%}
+
+        <div class="statLabel">Saves</div>
+        <div class="bars" id="Saves">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['saves'] }}</div>
+        </div>
+        <div class="statLabel">Save %</div>
+        <div class="bars" id="Save %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['savePerc'] }}</div>
+        </div>
+        <div class="statLabel">Clean Sheets</div>
+        <div class="bars" id="Clean Sheets">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['cleanSheets'] }}</div>
+        </div>
+        <div class="statLabel">Clean Sheet %</div>
+        <div class="bars" id="Clean Sheet %">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['cleanSheetPerc'] }}</div>
+        </div>
+        <div class="statLabel">Goals Against</div>
+        <div class="bars" id="Goals Against">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['goalsAgainst'] }}</div>
+        </div>
+        <div class="statLabel">Penalties Faced</div>
+        <div class="bars" id="Penalties Faced">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['penFaced'] }}</div>
+        </div>
+        <div class="statLabel">Penalties Saved</div>
+        <div class="bars" id="Penalties Saved">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['penSaved'] }}</div>
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['totalPasses'] }}</div>
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+        </div>
+        <div class="statLabel">Expected Goals Against</div>
+        <div class="bars" id="Expected Goals Against">
+          <div class="leftstat">-</div>
+          <div class="rightstat">{{playerB['xgAgainst'] }}</div>
+        </div>
+        <div class="statLabel">Shots on Target</div>
+        <div class="bars" id="Shots on Target">
+          <div class="leftstat">{{playerA['shotsOnTarget'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Penalties Scored</div>
+        <div class="bars" id="Penalties Scored">
+          <div class="leftstat">{{playerA['penalties'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take Ons</div>
+        <div class="bars" id="Take Ons">
+          <div class="leftstat">{{playerA['takeOns'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Take On %</div>
+        <div class="bars" id="Take On %">
+          <div class="leftstat">{{playerA['takeOnPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Dribbles</div>
+        <div class="bars" id="Dribbles">
+          <div class="leftstat">{{playerA['dribbles'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Final Third Touches</div>
+        <div class="bars" id="Final Third Touches">
+          <div class="leftstat">{{playerA['finalThirdTouches'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Key Passes</div>
+        <div class="bars" id="Key Passes">
+          <div class="leftstat">{{playerA['keyPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Progressive Passes</div>
+        <div class="bars" id="Progressive Passes">
+          <div class="leftstat">{{playerA['progPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Crosses</div>
+        <div class="bars" id="Crosses">
+          <div class="leftstat">{{playerA['crosses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Long Ball Completion %</div>
+        <div class="bars" id="Long Ball Completion %">
+          <div class="leftstat">{{playerA['longBallCompPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Recoveries</div>
+        <div class="bars" id="Recoveries">
+          <div class="leftstat">{{playerA['recoveries'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Fouls</div>
+        <div class="bars" id="Fouls">
+          <div class="leftstat">{{playerA['fouls'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Tackles</div>
+        <div class="bars" id="Tackles">
+          <div class="leftstat">{{playerA['tackles'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Blocks</div>
+        <div class="bars" id="Blocks">
+          <div class="leftstat">{{playerA['blocks'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Interceptions</div>
+        <div class="bars" id="Interceptions">
+          <div class="leftstat">{{playerA['interceptions'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Clearances</div>
+        <div class="bars" id="Clearances">
+          <div class="leftstat">{{playerA['totalPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Total Passes</div>
+        <div class="bars" id="Total Passes">
+          <div class="leftstat">{{playerA['totalPasses'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Pass Accuracy</div>
+        <div class="bars" id="Pass Accuracy">
+          <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        <div class="statLabel">Aerial Duel %</div>
+        <div class="bars" id="Aerial Duel %">
+          <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+          <div class="rightstat">-</div>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {%if playerA['position'] == 'DF'%}
+
+          {%if playerB['position'] == 'FW'%}
+
+          <div class="statLabel">Fouls</div>
+          <div class="bars" id="Fouls">
+            <div class="leftstat">{{playerA['fouls'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Tackles</div>
+          <div class="bars" id="Tackles">
+            <div class="leftstat">{{playerA['tackles'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Blocks</div>
+          <div class="bars" id="Blocks">
+            <div class="leftstat">{{playerA['blocks'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Interceptions</div>
+          <div class="bars" id="Interceptions">
+            <div class="leftstat">{{playerA['interceptions'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Clearances</div>
+          <div class="bars" id="Clearances">
+            <div class="leftstat">{{playerA['totalPasses'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Total Passes</div>
+          <div class="bars" id="Total Passes">
+            <div class="leftstat">{{playerA['totalPasses'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Pass Accuracy</div>
+          <div class="bars" id="Pass Accuracy">
+            <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Aerial Duel %</div>
+          <div class="bars" id="Aerial Duel %">
+            <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Shots on Target</div>
+          <div class="bars" id="Shots on Target">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+          </div>
+          <div class="statLabel">Penalties Scored</div>
+          <div class="bars" id="Penalties Scored">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['penalties'] }}</div>
+          </div>
+          <div class="statLabel">Take Ons</div>
+          <div class="bars" id="Take Ons">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['takeOns'] }}</div>
+          </div>
+          <div class="statLabel">Take On %</div>
+          <div class="bars" id="Take On %">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+          </div>
+          <div class="statLabel">Dribbles</div>
+          <div class="bars" id="Dribbles">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['dribbles'] }}</div>
+          </div>
+          <div class="statLabel">Final Third Touches</div>
+          <div class="bars" id="Final Third Touches">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+          </div>
+          <div class="statLabel">Key Passes</div>
+          <div class="bars" id="Key Passes">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['keyPasses'] }}</div>
+          </div>
+          <div class="statLabel">Progressive Passes</div>
+          <div class="bars" id="Progressive Passes">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['progPasses'] }}</div>
+          </div>
+          <div class="statLabel">Crosses</div>
+          <div class="bars" id="Crosses">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['crosses'] }}</div>
+          </div>
+          {% endif %}
+
+          {%if playerB['position'] == 'MF'%}
+          <div class="statLabel">Fouls</div>
+          <div class="bars" id="Fouls">
+            {% if playerA['fouls'] > playerB['fouls'] %}
+            <div class="leftstatred">{{playerA['fouls'] }}</div>
+            <div class="rightstatgreen">{{playerB['fouls'] }}</div>
+            {% elif playerB['fouls'] > playerA['fouls'] %}
+            <div class="leftstatgreen">{{playerA['fouls'] }}</div>
+            <div class="rightstatred">{{playerB['fouls'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['fouls'] }}</div>
+            <div class="rightstat">{{playerB['fouls'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Tackles</div>
+          <div class="bars" id="Tackles">
+            {% if playerA['tackles'] > playerB['tackles'] %}
+            <div class="leftstatgreen">{{playerA['tackles'] }}</div>
+            <div class="rightstatred">{{playerB['tackles'] }}</div>
+            {% elif playerB['tackles'] > playerA['tackles'] %}
+            <div class="leftstatred">{{playerA['tackles'] }}</div>
+            <div class="rightstatgreen">{{playerB['tackles'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['tackles'] }}</div>
+            <div class="rightstat">{{playerB['tackles'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Blocks</div>
+          <div class="bars" id="Blocks">
+            {% if playerA['blocks'] > playerB['blocks'] %}
+            <div class="leftstatgreen">{{playerA['blocks'] }}</div>
+            <div class="rightstatred">{{playerB['blocks'] }}</div>
+            {% elif playerB['blocks'] > playerA['blocks'] %}
+            <div class="leftstatred">{{playerA['blocks'] }}</div>
+            <div class="rightstatgreen">{{playerB['blocks'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['blocks'] }}</div>
+            <div class="rightstat">{{playerB['blocks'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Interceptions</div>
+          <div class="bars" id="Interceptions">
+            {% if playerA['interceptions'] > playerB['interceptions'] %}
+            <div class="leftstatgreen">{{playerA['interceptions'] }}</div>
+            <div class="rightstatred">{{playerB['interceptions'] }}</div>
+            {% elif playerB['interceptions'] > playerA['interceptions'] %}
+            <div class="leftstatred">{{playerA['interceptions'] }}</div>
+            <div class="rightstatgreen">{{playerB['interceptions'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['interceptions'] }}</div>
+            <div class="rightstat">{{playerB['interceptions'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Clearances</div>
+          <div class="bars" id="Clearances">
+            {% if playerA['clearances'] > playerB['clearances'] %}
+            <div class="leftstatgreen">{{playerA['clearances'] }}</div>
+            <div class="rightstatred">{{playerB['clearances'] }}</div>
+            {% elif playerB['clearances'] > playerA['clearances'] %}
+            <div class="leftstatred">{{playerA['clearances'] }}</div>
+            <div class="rightstatgreen">{{playerB['clearances'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['clearances'] }}</div>
+            <div class="rightstat">{{playerB['clearances'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Total Passes</div>
+          <div class="bars" id="Total Passes">
+            {% if playerA['totalPasses'] > playerB['totalPasses'] %}
+            <div class="leftstatgreen">{{playerA['totalPasses'] }}</div>
+            <div class="rightstatred">{{playerB['totalPasses'] }}</div>
+            {% elif playerB['totalPasses'] > playerA['totalPasses'] %}
+            <div class="leftstatred">{{playerA['totalPasses'] }}</div>
+            <div class="rightstatgreen">{{playerB['totalPasses'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['totalPasses'] }}</div>
+            <div class="rightstat">{{playerB['totalPasses'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Pass Accuracy</div>
+          <div class="bars" id="Pass Accuracy">
+            {% if playerA['passAccuracy'] > playerB['passAccuracy'] %}
+            <div class="leftstatgreen">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstatred">{{playerB['passAccuracy'] }}</div>
+            {% elif playerB['passAccuracy'] > playerA['passAccuracy'] %}
+            <div class="leftstatred">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstatgreen">{{playerB['passAccuracy'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Aerial Duel %</div>
+          <div class="bars" id="Aerial Duel %">
+            {% if playerA['aerialDuelPerc'] > playerB['aerialDuelPerc'] %}
+            <div class="leftstatgreen">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstatred">{{playerB['aerialDuelPerc'] }}</div>
+            {% elif playerB['aerialDuelPerc'] > playerA['aerialDuelPerc'] %}
+            <div class="leftstatred">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstatgreen">{{playerB['aerialDuelPerc'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Shots on Target</div>
+          <div class="bars" id="Shots on Target">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+          </div>
+          <div class="statLabel">Penalties Scored</div>
+          <div class="bars" id="Penalties Scored">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['penalties'] }}</div>
+          </div>
+          <div class="statLabel">Take Ons</div>
+          <div class="bars" id="Take Ons">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['takeOns'] }}</div>
+          </div>
+          <div class="statLabel">Take On %</div>
+          <div class="bars" id="Take On %">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+          </div>
+          <div class="statLabel">Dribbles</div>
+          <div class="bars" id="Dribbles">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['dribbles'] }}</div>
+          </div>
+          <div class="statLabel">Final Third Touches</div>
+          <div class="bars" id="Final Third Touches">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+          </div>
+          <div class="statLabel">Key Passes</div>
+          <div class="bars" id="Key Passes">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['keyPasses'] }}</div>
+          </div>
+          <div class="statLabel">Progressive Passes</div>
+          <div class="bars" id="Progressive Passes">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['progPasses'] }}</div>
+          </div>
+          <div class="statLabel">Crosses</div>
+          <div class="bars" id="Crosses">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['crosses'] }}</div>
+          </div>
+          <div class="statLabel">Long Ball Completion %</div>
+          <div class="bars" id="Long Ball Completion %">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['longBallCompPerc'] }}</div>
+          </div>
+          <div class="statLabel">Recoveries</div>
+          <div class="bars" id="Recoveries">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['recoveries'] }}</div>
+          </div>
+          {% endif %}
+
+          {%if playerB['position'] == 'DF'%}
+          <div class="statLabel">Fouls</div>
+          <div class="bars" id="Fouls">
+            {% if playerA['fouls'] > playerB['fouls'] %}
+            <div class="leftstatred">{{playerA['fouls'] }}</div>
+            <div class="rightstatgreen">{{playerB['fouls'] }}</div>
+            {% elif playerB['fouls'] > playerA['fouls'] %}
+            <div class="leftstatgreen">{{playerA['fouls'] }}</div>
+            <div class="rightstatred">{{playerB['fouls'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['fouls'] }}</div>
+            <div class="rightstat">{{playerB['fouls'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Tackles</div>
+          <div class="bars" id="Tackles">
+            {% if playerA['tackles'] > playerB['tackles'] %}
+            <div class="leftstatgreen">{{playerA['tackles'] }}</div>
+            <div class="rightstatred">{{playerB['tackles'] }}</div>
+            {% elif playerB['tackles'] > playerA['tackles'] %}
+            <div class="leftstatred">{{playerA['tackles'] }}</div>
+            <div class="rightstatgreen">{{playerB['tackles'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['tackles'] }}</div>
+            <div class="rightstat">{{playerB['tackles'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Blocks</div>
+          <div class="bars" id="Blocks">
+            {% if playerA['blocks'] > playerB['blocks'] %}
+            <div class="leftstatgreen">{{playerA['blocks'] }}</div>
+            <div class="rightstatred">{{playerB['blocks'] }}</div>
+            {% elif playerB['blocks'] > playerA['blocks'] %}
+            <div class="leftstatred">{{playerA['blocks'] }}</div>
+            <div class="rightstatgreen">{{playerB['blocks'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['blocks'] }}</div>
+            <div class="rightstat">{{playerB['blocks'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Interceptions</div>
+          <div class="bars" id="Interceptions">
+            {% if playerA['interceptions'] > playerB['interceptions'] %}
+            <div class="leftstatgreen">{{playerA['interceptions'] }}</div>
+            <div class="rightstatred">{{playerB['interceptions'] }}</div>
+            {% elif playerB['interceptions'] > playerA['interceptions'] %}
+            <div class="leftstatred">{{playerA['interceptions'] }}</div>
+            <div class="rightstatgreen">{{playerB['interceptions'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['interceptions'] }}</div>
+            <div class="rightstat">{{playerB['interceptions'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Clearances</div>
+          <div class="bars" id="Clearances">
+            {% if playerA['clearances'] > playerB['clearances'] %}
+            <div class="leftstatgreen">{{playerA['clearances'] }}</div>
+            <div class="rightstatred">{{playerB['clearances'] }}</div>
+            {% elif playerB['clearances'] > playerA['clearances'] %}
+            <div class="leftstatred">{{playerA['clearances'] }}</div>
+            <div class="rightstatgreen">{{playerB['clearances'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['clearances'] }}</div>
+            <div class="rightstat">{{playerB['clearances'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Total Passes</div>
+          <div class="bars" id="Total Passes">
+            {% if playerA['totalPasses'] > playerB['totalPasses'] %}
+            <div class="leftstatgreen">{{playerA['totalPasses'] }}</div>
+            <div class="rightstatred">{{playerB['totalPasses'] }}</div>
+            {% elif playerB['totalPasses'] > playerA['totalPasses'] %}
+            <div class="leftstatred">{{playerA['totalPasses'] }}</div>
+            <div class="rightstatgreen">{{playerB['totalPasses'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['totalPasses'] }}</div>
+            <div class="rightstat">{{playerB['totalPasses'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Pass Accuracy</div>
+          <div class="bars" id="Pass Accuracy">
+            {% if playerA['passAccuracy'] > playerB['passAccuracy'] %}
+            <div class="leftstatgreen">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstatred">{{playerB['passAccuracy'] }}</div>
+            {% elif playerB['passAccuracy'] > playerA['passAccuracy'] %}
+            <div class="leftstatred">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstatgreen">{{playerB['passAccuracy'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+            {% endif %}
+          </div>
+          <div class="statLabel">Aerial Duel %</div>
+          <div class="bars" id="Aerial Duel %">
+            {% if playerA['aerialDuelPerc'] > playerB['aerialDuelPerc'] %}
+            <div class="leftstatgreen">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstatred">{{playerB['aerialDuelPerc'] }}</div>
+            {% elif playerB['aerialDuelPerc'] > playerA['aerialDuelPerc'] %}
+            <div class="leftstatred">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstatgreen">{{playerB['aerialDuelPerc'] }}</div>
+            {% else %}
+            <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          {%if playerB['position'] == 'GK'%}
+          <div class="statLabel">Saves</div>
+          <div class="bars" id="Saves">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['saves'] }}</div>
+          </div>
+          <div class="statLabel">Save %</div>
+          <div class="bars" id="Save %">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['savePerc'] }}</div>
+          </div>
+          <div class="statLabel">Clean Sheets</div>
+          <div class="bars" id="Clean Sheets">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['cleanSheets'] }}</div>
+          </div>
+          <div class="statLabel">Clean Sheet %</div>
+          <div class="bars" id="Clean Sheet %">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['cleanSheetPerc'] }}</div>
+          </div>
+          <div class="statLabel">Goals Against</div>
+          <div class="bars" id="Goals Against">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['goalsAgainst'] }}</div>
+          </div>
+          <div class="statLabel">Penalties Faced</div>
+          <div class="bars" id="Penalties Faced">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['penFaced'] }}</div>
+          </div>
+          <div class="statLabel">Penalties Saved</div>
+          <div class="bars" id="Penalties Saved">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['penSaved'] }}</div>
+          </div>
+          <div class="statLabel">Total Passes</div>
+          <div class="bars" id="Total Passes">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['totalPasses'] }}</div>
+          </div>
+          <div class="statLabel">Pass Accuracy</div>
+          <div class="bars" id="Pass Accuracy">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+          </div>
+          <div class="statLabel">Expected Goals Against</div>
+          <div class="bars" id="Expected Goals Against">
+            <div class="leftstat">-</div>
+            <div class="rightstat">{{playerB['xgAgainst'] }}</div>
+          </div>
+          <div class="statLabel">Fouls</div>
+          <div class="bars" id="Fouls">
+            <div class="leftstat">{{playerA['fouls'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Tackles</div>
+          <div class="bars" id="Tackles">
+            <div class="leftstat">{{playerA['tackles'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Blocks</div>
+          <div class="bars" id="Blocks">
+            <div class="leftstat">{{playerA['blocks'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Interceptions</div>
+          <div class="bars" id="Interceptions">
+            <div class="leftstat">{{playerA['interceptions'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Clearances</div>
+          <div class="bars" id="Clearances">
+            <div class="leftstat">{{playerA['clearances'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Total Passes</div>
+          <div class="bars" id="Total Passes">
+            <div class="leftstat">{{playerA['totalPasses'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Pass Accuracy</div>
+          <div class="bars" id="Pass Accuracy">
+            <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          <div class="statLabel">Aerial Duel %</div>
+          <div class="bars" id="Aerial Duel %">
+            <div class="leftstat">{{playerA['aerialDuelPerc'] }}</div>
+            <div class="rightstat">-</div>
+          </div>
+          {% endif %}
+          {% endif %}
+
+          {%if playerA['position'] == 'GK'%}
+            {%if playerB['position'] == 'FW'%}
+
+            <div class="statLabel">Saves</div>
+            <div class="bars" id="Saves">
+              <div class="leftstat">{{playerA['saves'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Save %</div>
+            <div class="bars" id="Save %">
+              <div class="leftstat">{{playerA['savePerc'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Clean Sheets</div>
+            <div class="bars" id="Clean Sheets">
+              <div class="leftstat">{{playerA['cleanSheets'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Clean Sheet %</div>
+            <div class="bars" id="Clean Sheet %">
+              <div class="leftstat">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Goals Against</div>
+            <div class="bars" id="Goals Against">
+              <div class="leftstat">{{playerA['goalsAgainst'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Penalties Faced</div>
+            <div class="bars" id="Penalties Faced">
+              <div class="leftstat">{{playerA['penFaced'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Penalties Saved</div>
+            <div class="bars" id="Penalties Saved">
+              <div class="leftstat">{{playerA['penSaved'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Total Passes</div>
+            <div class="bars" id="Total Passes">
+              <div class="leftstat">{{playerA['totalPasses'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Pass Accuracy</div>
+            <div class="bars" id="Pass Accuracy">
+              <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Expected Goals Against</div>
+            <div class="bars" id="Expected Goals Against">
+              <div class="leftstat">{{playerA['xgAgainst'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Shots on Target</div>
+            <div class="bars" id="Shots on Target">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+            </div>
+            <div class="statLabel">Penalties Scored</div>
+            <div class="bars" id="Penalties Scored">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['penalties'] }}</div>
+            </div>
+            <div class="statLabel">Take Ons</div>
+            <div class="bars" id="Take Ons">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['takeOns'] }}</div>
+            </div>
+            <div class="statLabel">Take On %</div>
+            <div class="bars" id="Take On %">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+            </div>
+            <div class="statLabel">Dribbles</div>
+            <div class="bars" id="Dribbles">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['dribbles'] }}</div>
+            </div>
+            <div class="statLabel">Final Third Touches</div>
+            <div class="bars" id="Final Third Touches">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+            </div>
+            <div class="statLabel">Key Passes</div>
+            <div class="bars" id="Key Passes">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['keyPasses'] }}</div>
+            </div>
+            <div class="statLabel">Progressive Passes</div>
+            <div class="bars" id="Progressive Passes">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['progPasses'] }}</div>
+            </div>
+            <div class="statLabel">Crosses</div>
+            <div class="bars" id="Crosses">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['crosses'] }}</div>
+            </div>
+            {% endif %}
+
+            {%if playerB['position'] == 'MF'%}
+            <div class="statLabel">Saves</div>
+            <div class="bars" id="Saves">
+              <div class="leftstat">{{playerA['saves'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Save %</div>
+            <div class="bars" id="Save %">
+              <div class="leftstat">{{playerA['savePerc'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Clean Sheets</div>
+            <div class="bars" id="Clean Sheets">
+              <div class="leftstat">{{playerA['cleanSheets'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Clean Sheet %</div>
+            <div class="bars" id="Clean Sheet %">
+              <div class="leftstat">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Goals Against</div>
+            <div class="bars" id="Goals Against">
+              <div class="leftstat">{{playerA['goalsAgainst'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Penalties Faced</div>
+            <div class="bars" id="Penalties Faced">
+              <div class="leftstat">{{playerA['penFaced'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Penalties Saved</div>
+            <div class="bars" id="Penalties Saved">
+              <div class="leftstat">{{playerA['penSaved'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Total Passes</div>
+            <div class="bars" id="Total Passes">
+              <div class="leftstat">{{playerA['totalPasses'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Pass Accuracy</div>
+            <div class="bars" id="Pass Accuracy">
+              <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Expected Goals Against</div>
+            <div class="bars" id="Expected Goals Against">
+              <div class="leftstat">{{playerA['xgAgainst'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Shots on Target</div>
+            <div class="bars" id="Shots on Target">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['shotsOnTarget'] }}</div>
+            </div>
+            <div class="statLabel">Penalties Scored</div>
+            <div class="bars" id="Penalties Scored">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['penalties'] }}</div>
+            </div>
+            <div class="statLabel">Take Ons</div>
+            <div class="bars" id="Take Ons">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['takeOns'] }}</div>
+            </div>
+            <div class="statLabel">Take On %</div>
+            <div class="bars" id="Take On %">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['takeOnPerc'] }}</div>
+            </div>
+            <div class="statLabel">Dribbles</div>
+            <div class="bars" id="Dribbles">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['dribbles'] }}</div>
+            </div>
+            <div class="statLabel">Final Third Touches</div>
+            <div class="bars" id="Final Third Touches">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['finalThirdTouches'] }}</div>
+            </div>
+            <div class="statLabel">Key Passes</div>
+            <div class="bars" id="Key Passes">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['keyPasses'] }}</div>
+            </div>
+            <div class="statLabel">Progressive Passes</div>
+            <div class="bars" id="Progressive Passes">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['progPasses'] }}</div>
+            </div>
+            <div class="statLabel">Crosses</div>
+            <div class="bars" id="Crosses">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['crosses'] }}</div>
+            </div>
+            <div class="statLabel">Fouls</div>
+            <div class="bars" id="Fouls">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['fouls'] }}</div>
+            </div>
+            <div class="statLabel">Tackles</div>
+            <div class="bars" id="Tackles">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['tackles'] }}</div>
+            </div>
+            <div class="statLabel">Blocks</div>
+            <div class="bars" id="Blocks">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['blocks'] }}</div>
+            </div>
+            <div class="statLabel">Interceptions</div>
+            <div class="bars" id="Interceptions">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['interceptions'] }}</div>
+            </div>
+            <div class="statLabel">Clearances</div>
+            <div class="bars" id="Clearances">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['totalPasses'] }}</div>
+            </div>
+            <div class="statLabel">Total Passes</div>
+            <div class="bars" id="Total Passes">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['totalPasses'] }}</div>
+            </div>
+            <div class="statLabel">Pass Accuracy</div>
+            <div class="bars" id="Pass Accuracy">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+            </div>
+            <div class="statLabel">Aerial Duel %</div>
+            <div class="bars" id="Aerial Duel %">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+            </div>
+            <div class="statLabel">Long Ball Completion %</div>
+            <div class="bars" id="Long Ball Completion %">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['longBallCompPerc'] }}</div>
+            </div>
+            <div class="statLabel">Recoveries</div>
+            <div class="bars" id="Recoveries">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['recoveries'] }}</div>
+            </div>
+            {% endif %}
+
+            {%if playerB['position'] == 'DF'%}
+            <div class="statLabel">Saves</div>
+            <div class="bars" id="Saves">
+              <div class="leftstat">{{playerA['saves'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Save %</div>
+            <div class="bars" id="Save %">
+              <div class="leftstat">{{playerA['savePerc'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Clean Sheets</div>
+            <div class="bars" id="Clean Sheets">
+              <div class="leftstat">{{playerA['cleanSheets'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Clean Sheet %</div>
+            <div class="bars" id="Clean Sheet %">
+              <div class="leftstat">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Goals Against</div>
+            <div class="bars" id="Goals Against">
+              <div class="leftstat">{{playerA['goalsAgainst'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Penalties Faced</div>
+            <div class="bars" id="Penalties Faced">
+              <div class="leftstat">{{playerA['penFaced'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Penalties Saved</div>
+            <div class="bars" id="Penalties Saved">
+              <div class="leftstat">{{playerA['penSaved'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Total Passes</div>
+            <div class="bars" id="Total Passes">
+              <div class="leftstat">{{playerA['totalPasses'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Pass Accuracy</div>
+            <div class="bars" id="Pass Accuracy">
+              <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Expected Goals Against</div>
+            <div class="bars" id="Expected Goals Against">
+              <div class="leftstat">{{playerA['xgAgainst'] }}</div>
+              <div class="rightstat">-</div>
+            </div>
+            <div class="statLabel">Fouls</div>
+            <div class="bars" id="Fouls">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['fouls'] }}</div>
+            </div>
+            <div class="statLabel">Tackles</div>
+            <div class="bars" id="Tackles">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['tackles'] }}</div>
+            </div>
+            <div class="statLabel">Blocks</div>
+            <div class="bars" id="Tackles">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['blocks'] }}</div>
+            </div>
+            <div class="statLabel">Interceptions</div>
+            <div class="bars" id="Interceptions">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['interceptions'] }}</div>
+            </div>
+            <div class="statLabel">Clearances</div>
+            <div class="bars" id="Clearances">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['totalPasses'] }}</div>
+            </div>
+            <div class="statLabel">Total Passes</div>
+            <div class="bars" id="Total Passes">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['totalPasses'] }}</div>
+            </div>
+            <div class="statLabel">Pass Accuracy</div>
+            <div class="bars" id="Pass Accuracy">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+            </div>
+            <div class="statLabel">Aerial Duel %</div>
+            <div class="bars" id="Aerial Duel %">
+              <div class="leftstat">-</div>
+              <div class="rightstat">{{playerB['aerialDuelPerc'] }}</div>
+            </div>
+            {% endif %}
+
+            {%if playerB['position'] == 'GK'%}
+            <div class="statLabel">Saves</div>
+            <div class="bars" id="Saves">
+              {% if playerA['saves'] > playerB['saves'] %}
+              <div class="leftstatgreen">{{playerA['saves'] }}</div>
+              <div class="rightstatred">{{playerB['saves'] }}</div>
+              {% elif playerB['saves'] > playerA['saves'] %}
+              <div class="leftstatred">{{playerA['saves'] }}</div>
+              <div class="rightstatgreen">{{playerB['saves'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['saves'] }}</div>
+              <div class="rightstat">{{playerB['saves'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Save %</div>
+            <div class="bars" id="Save %">
+              {% if playerA['savePerc'] > playerB['savePerc'] %}
+              <div class="leftstatgreen">{{playerA['savePerc'] }}</div>
+              <div class="rightstatred">{{playerB['savePerc'] }}</div>
+              {% elif playerB['savePerc'] > playerA['savePerc'] %}
+              <div class="leftstatred">{{playerA['savePerc'] }}</div>
+              <div class="rightstatgreen">{{playerB['savePerc'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['savePerc'] }}</div>
+              <div class="rightstat">{{playerB['savePerc'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Clean Sheets</div>
+            <div class="bars" id="Clean Sheets">
+              {% if playerA['cleanSheets'] > playerB['cleanSheets'] %}
+              <div class="leftstatgreen">{{playerA['cleanSheets'] }}</div>
+              <div class="rightstatred">{{playerB['cleanSheets'] }}</div>
+              {% elif playerB['cleanSheets'] > playerA['cleanSheets'] %}
+              <div class="leftstatred">{{playerA['cleanSheets'] }}</div>
+              <div class="rightstatgreen">{{playerB['cleanSheets'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['cleanSheets'] }}</div>
+              <div class="rightstat">{{playerB['cleanSheets'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Clean Sheet %</div>
+            <div class="bars" id="Clean Sheet %">
+              {% if playerA['cleanSheetPerc'] > playerB['cleanSheetPerc'] %}
+              <div class="leftstatgreen">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstatred">{{playerB['cleanSheetPerc'] }}</div>
+              {% elif playerB['cleanSheetPerc'] > playerA['cleanSheetPerc'] %}
+              <div class="leftstatred">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstatgreen">{{playerB['cleanSheetPerc'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstat">{{playerB['cleanSheetPerc'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Goals Against</div>
+            <div class="bars" id="Goals Against">
+              {% if playerA['goalsAgainst'] > playerB['goalsAgainst'] %}
+              <div class="leftstatred">{{playerA['goalsAgainst'] }}</div>
+              <div class="rightstatgreen">{{playerB['goalsAgainst'] }}</div>
+              {% elif playerB['goalsAgainst'] > playerA['goalsAgainst'] %}
+              <div class="leftstatgreen">{{playerA['goalsAgainst'] }}</div>
+              <div class="rightstatred">{{playerB['goalsAgainst'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['goalsAgainst'] }}</div>
+              <div class="rightstat">{{playerB['goalsAgainst'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Expected Goals Against</div>
+            <div class="bars" id="Expected Goals Against">
+              {% if playerA['xgAgainst'] > playerB['xgAgainst'] %}
+              <div class="leftstatred">{{playerA['xgAgainst'] }}</div>
+              <div class="rightstatgreen">{{playerB['xgAgainst'] }}</div>
+              {% elif playerB['xgAgainst'] > playerA['xgAgainst'] %}
+              <div class="leftstatgreen">{{playerA['xgAgainst'] }}</div>
+              <div class="rightstatred">{{playerB['xgAgainst'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['xgAgainst'] }}</div>
+              <div class="rightstat">{{playerB['xgAgainst'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Penalties Faced</div>
+            <div class="bars" id="Penalties Faced">
+              {% if playerA['penFaced'] > playerB['penFaced'] %}
+              <div class="leftstatgreen">{{playerA['penFaced'] }}</div>
+              <div class="rightstatred">{{playerB['penFaced'] }}</div>
+              {% elif playerB['penFaced'] > playerA['penFaced'] %}
+              <div class="leftstatred">{{playerA['penFaced'] }}</div>
+              <div class="rightstatgreen">{{playerB['penFaced'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['penFaced'] }}</div>
+              <div class="rightstat">{{playerB['penFaced'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Penalties Saved</div>
+            <div class="bars" id="Penalties Saved">
+              {% if playerA['penSaved'] > playerB['penSaved'] %}
+              <div class="leftstatgreen">{{playerA['penSaved'] }}</div>
+              <div class="rightstatred">{{playerB['penSaved'] }}</div>
+              {% elif playerB['penSaved'] > playerA['penSaved'] %}
+              <div class="leftstatred">{{playerA['penSaved'] }}</div>
+              <div class="rightstatgreen">{{playerB['penSaved'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['cleanSheetPerc'] }}</div>
+              <div class="rightstat">{{playerB['cleanSheetPerc'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Total Passes</div>
+            <div class="bars" id="Total Passes">
+              {% if playerA['totalPasses'] > playerB['totalPasses'] %}
+              <div class="leftstatgreen">{{playerA['totalPasses'] }}</div>
+              <div class="rightstatred">{{playerB['totalPasses'] }}</div>
+              {% elif playerB['totalPasses'] > playerA['totalPasses'] %}
+              <div class="leftstatred">{{playerA['totalPasses'] }}</div>
+              <div class="rightstatgreen">{{playerB['totalPasses'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['totalPasses'] }}</div>
+              <div class="rightstat">{{playerB['totalPasses'] }}</div>
+              {% endif %}
+            </div>
+            <div class="statLabel">Pass Accuracy</div>
+            <div class="bars" id="Pass Accuracy">
+              {% if playerA['passAccuracy'] > playerB['passAccuracy'] %}
+              <div class="leftstatgreen">{{playerA['passAccuracy'] }}</div>
+              <div class="rightstatred">{{playerB['passAccuracy'] }}</div>
+              {% elif playerB['passAccuracy'] > playerA['passAccuracy'] %}
+              <div class="leftstatred">{{playerA['passAccuracy'] }}</div>
+              <div class="rightstatgreen">{{playerB['passAccuracy'] }}</div>
+              {% else %}
+              <div class="leftstat">{{playerA['passAccuracy'] }}</div>
+              <div class="rightstat">{{playerB['passAccuracy'] }}</div>
+              {% endif %}
+            </div>
+            {% endif %}
+            {% endif %}
+    </div>
+    <div class="blackLineSmallBottom"></div>
+    <div class="directionbox">
+      <div class="directions">Directions:</div>
+      <div class="explanation">Select 5 stats from below to include in comparison graphic</div>
+    </div>
+    <div class="buttonContainer"></div>
+    <button id='generate' class="generate">Download Image</button>
+    <div class="graphic" id="graphic">
+      <img class="photo" src="https://i.ibb.co/swWPxDB/Attachment-1-1.png">
+      <div class="graphicDesign"></div>
+      <div class="graphicLeft" id="graphicLeft">
+        <img class="playerCircleTop"/>
+        <div class="graphicPics">
+          <img class="graphicNation"/>
+          <img class="graphicClub" src=""/>
+        </div>
+      </div>
+      <div class="middleCenter">
+        <div class="graphicPlayer" id="graphicPlayerTop">
+          <div class="nameBrickTop">
+            <div class="nameTopTop">Erling</div>
+            <div class="nameTopBot">HAALAND</div>
+          </div>
+          <div class="graphicPos">FW</div>
+        </div>
+      <div class="stats" id="stats">
+      <div class="statGroup">
+        <div class="graphicLeftStat">35</div>
+        <div class="middle">Goals</div>
+        <div class="graphicRightStat">15</div>
+        <!--<div class="middleMark" id="firstMark"></div>-->
+      </div>
+      <canvas class='statbar' id="firstStat"></canvas>
+      <div class="statGroup">
+        <div class="graphicLeftStat">6</div>
+        <div class="middle">Assists</div>
+        <div class="graphicRightStat">8</div>
+        <!--<div class="middleMark" id="secondMark"></div>-->
+      </div>
+      <canvas class='statbar' id="secondStat"></canvas>
+      <div class="statGroup">
+        <div class="graphicLeftStat">51</div>
+        <div class="middle">Matches</div>
+        <div class="graphicRightStat">41</div>
+        <!--<div class="middleMark" id="thirdMark"></div>-->
+      </div>
+      <canvas class='statbar' id="thirdStat"></canvas>
+      <div class="statGroup">
+        <div class="graphicLeftStat">70</div>
+        <div class="middle">Tackles</div>
+        <div class="graphicRightStat">12</div>
+        <!--<div class="middleMark" id="fourthMark"></div>-->
+      </div>
+      <canvas class='statbar' id="fourthStat"></canvas>
+      <div class="statGroup">
+        <div class="graphicLeftStat">1</div>
+        <div class="middle">Trophies</div>
+        <div class="graphicRightStat">0</div>
+        <!--<div class="middleMark" id="fifthMark"></div>-->
+      </div>
+      <canvas class='statbar' id="fifthStat"></canvas>
+      </div>
+      <div class="graphicPlayerBottom" id="graphicPlayerBottom">
+        <div class="graphicPosBot">FW</div>
+        <div class="nameBrickBot">
+          <div class="nameBotTop">RASHFORD</div>
+          <div class="nameBotBot">Marcus</div>
+        </div>
+      </div>
+      </div>
+      <div class="graphicRight" id="graphicRight">
+        <div class="graphicPicsBottom">
+          <img class="graphicClub"/>
+          <img class="graphicNation"/>
+        </div>
+        <div class="playerCircleBot"></div>
+      </div>
+    </div>
+      
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://github.com/niklasvh/html2canvas/releases/download/v1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
